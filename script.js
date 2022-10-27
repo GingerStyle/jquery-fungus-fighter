@@ -61,6 +61,7 @@ function decrementsPoints(attackCost, fungusCost){
     if(attackPoints <0){
         attackPoints = 0;
     }
+    //check if either player is dead
     isDead();
 }
 
@@ -83,4 +84,7 @@ function render(){
     //write new values
     $('.hp-text').text(fungusHP);
     $('.ap-text').text(attackPoints);
+    //update progress bars
+    $('#ap-meter').val(attackPoints);
+    $('#hp-meter').val(fungusHP);
 }

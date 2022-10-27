@@ -47,9 +47,7 @@ function attackButtonPress(){
                 hitPoints = 25;
                 decrementsPoints(attackPoints, hitPoints);
                 render();
-            }
-
-            
+            }   
 }
 //function to decrement fungusHP and attackPoints
 function decrementsPoints(attackCost, fungusCost){
@@ -61,12 +59,23 @@ function decrementsPoints(attackCost, fungusCost){
     if(attackPoints <0){
         attackPoints = 0;
     }
+    //check to see if the fungus will start regenerating
+    regenerate();
     //check if either player is dead
-    isDead();
+    ifDead();
+}
+
+//function to set regeneration if points<50
+function regenerate(){
+    if (fungusHP<50){
+        setInterval(fungusHP++, 1000);
+        console.log('fungusHP:', fungusHP);
+        render();
+    }
 }
 
 //function to check if either player is dead
-function isDead(){
+function ifDead(){
     //see if either player has 0 points
     if (fungusHP == 0){
         $('.freaky-fungus').removeClass('walk');
@@ -76,7 +85,6 @@ function isDead(){
         $('.freaky-fungus').removeClass('walk');
         $('.freaky-fungus').addClass('jump');
     }
-
 }
 
 //function to update attackPopints and fungusHP on the DOM

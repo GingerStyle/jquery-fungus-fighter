@@ -68,7 +68,7 @@ function decrementsPoints(attackCost, fungusCost){
 //function to set regeneration if points<50
 function regenerate(){
     if (fungusHP<50){
-        setInterval(fungusHP++, 1000);
+        setInterval(fungusHP++, 1000); //this does not work for some reason
         console.log('fungusHP:', fungusHP);
         render();
     }
